@@ -2,7 +2,7 @@
 faker模块---构造数据
 1、将字符串型的int、float、list、tuple、dict构造的意义，为什么不直接使用函数直接转、ast处理的意义？
 2、try_get_object 最外层return无返回值，未返回source，是否是bug
-3、数据构造：
+3、数据待重新构造：
 - 使用类封装：
 - 添加自定义可扩展方法
 - 增加入参控制生成数据格式  locale
