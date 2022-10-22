@@ -1,5 +1,12 @@
 """"
-faker模块---构造数据
+faker模块（作用：构造数据）
+
+一、需求背景
+写一个简单的构造数据的小工具，上传到pypi库。
+
+二、实现
+参照catcher库faker构造数据py文件进行二次改造。
+源码不清楚及待实现点：
 1、将字符串型的int、float、list、tuple、dict构造的意义，为什么不直接使用函数直接转、ast处理的意义？
 2、try_get_object 最外层return无返回值，未返回source，是否是bug
 3、数据待重新构造：
