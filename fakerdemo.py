@@ -7,12 +7,12 @@ faker模块（作用：构造数据）
 二、实现思路
 参照catcher库faker构造数据py文件进行二次改造。
 源码不清楚及待实现点：
-1、将字符串型的int、float、list、tuple、dict构造的意义，为什么不直接使用函数直接转、ast处理的意义？
+1、输入字符串型的int、float、list、tuple、dict参数构造的意义，为什么不直接使用函数直接转、ast处理的意义？
 2、try_get_object 最外层return无返回值，未返回source，是否是bug
-3、数据待重新构造：
+3、函数待重新构造：
 - 使用类封装：
 - 添加自定义可扩展方法
-- 增加入参控制生成数据格式  locale
+- 增加locale位置参数控制输出的数据格式
 
 F.e. ::
     from faker.providers import BaseProvider
@@ -175,7 +175,7 @@ class MyProvider(Faker, BaseProvider):
         """
         return str(MyProvider.try_get_objects(param))
 
-    def function_random(self, param_obj, locale):
+    def function_random(self, param_obj, locale=None):
         """
         Call `Faker <https://github.com/joke2k/faker>`_ and return it's result. Is used to generate random data.
         F.e. ::
@@ -288,6 +288,11 @@ class MyProvider(Faker, BaseProvider):
 
 
 if __name__ == '__main__':
+    # 自定义生成数据元祖/列表
+    source_name = ['name', 'email', 'address',
+                   'ssn', 'company', 'job',
+                   'phone_number', 'email'
+                   ]
     provider = MyProvider()
-    test_data = provider.function_random(['name', 'email', 'address'], 'zh_CN')
+    test_data = provider.function_random(source_name, locale='zh_CN')
     print(test_data)
